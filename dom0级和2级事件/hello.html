@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>dom事件</title>
+	<script src="jquery.js"></script>
+	<style type="text/css">
+	#hash1{
+		width: 200px;
+		height: 200px;
+		background-color: pink;
+	}
+	</style>
+</head>
+<body>
+
+
+<!-- <a href="#" id="hash" onclick="fn();fn1();">
+<button type="button">返回上面进行开通</button>
+</a> -->
+<div id="hash1"></div>
+<script type="text/javascript">
+	//原生JS绑定dom2级事件
+	var btn=$('#hash1').get(0);
+	btn.addEventListener('click',function(){
+		alert('原生JS事件dom2级第一次click')
+	},false);
+	btn.addEventListener('click',function(){
+		alert('原生JS事件dom2级第二次click')
+	},false);
+
+	btn.onclick=function(){
+		alert('1');
+	};
+	btn.onclick=function(){
+		alert('2');
+	};
+
+	//jquery dom2级绑定事件
+	$('#hash').click(function(){
+	alert('jq的dom2级点击第一次')
+	});
+	$('#hash').click(function(){
+	alert('jq的dom2级点击第二次')
+	});
+	
+	//
+	function fn(){
+		alert("fn原生dom0级click");
+	};
+	function fn1(){
+		alert("fn1原生dom0级click");
+	};
+</script>
+</body>
+</html>

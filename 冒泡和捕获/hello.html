@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>冒泡捕获</title>
+	<style type="text/css">
+	#test{
+		width: 400px;
+		height: 400px;
+		background-color: pink;
+		float: left;
+	}
+	#testInner{
+		width: 200px;
+		height: 200px;
+		background-color: #c0c0c0;
+		float: left;
+	}
+	</style>
+
+</head>
+<body>
+	<div id="test" class="test" >
+		<div id="testInner" class="test-inner">hahahaha</div>
+	</div>
+	<script type="text/javascript">
+	//在外层元素注册捕获和冒泡事件
+		var btn = document.getElementById("test"); 
+		//冒泡事件
+		btn.addEventListener("click", function(e){
+			alert("外层元素冒泡");
+		}, false);
+		//捕获事件
+		btn.addEventListener("click", function(e){
+			alert("外层元素捕获");
+		}, true);
+		
+
+	//在触发元素注册捕获和冒泡事件
+		var btn = document.getElementById("testInner"); 
+		//捕获事件
+		btn.addEventListener("click", function(e){
+			alert("内层元素捕获");
+		}, true);
+		//冒泡事件
+		btn.addEventListener("click", function(e){
+			e.stopPropagation();//停止向外层元素冒泡
+			alert("内层元素冒泡");
+		}, false);
+
+		document.write("123456");
+	</script>
+</body>
+</html>
